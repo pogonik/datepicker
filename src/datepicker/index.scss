@@ -1,0 +1,434 @@
+.picker {
+    width: 280px;
+    padding: 0;
+    margin: auto auto 1.5rem;
+
+    .pickerWrapper {
+        .body {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 5px 7px;
+        }
+    }
+
+    &.vertical {
+        .hero {
+            padding: 0;
+            height: 235px;
+            align-items: stretch;
+            justify-content: center;
+
+            .title {
+                margin-bottom: 1rem;
+                font-size: 4.75rem;
+            }
+
+            .nav {
+                padding: 7px 15px;
+                margin-bottom: 5px;
+            }
+
+            .selected {
+                display: flex;
+                flex-grow: 1;
+                justify-content: center;
+                flex-direction: column;
+                padding-top: 30px;
+            }
+        }
+
+        .pickerWrapper {
+            .header {
+                padding: 2px 7px;
+            }
+
+            .body {
+                .day {
+                    width: 38px;
+
+                    &:not(.notInMonth):after,
+                    &.today:before,
+                    &.selected>span {
+                        left: 3px;
+                    }
+                }
+            }
+        }
+    }
+
+    &.horizontal {
+        display: flex;
+        min-width: 525px;
+        flex-direction: row;
+
+        .hero {
+            flex-grow: 1;
+            border-radius: 0;
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+            justify-content: center;
+            position: relative;
+            min-width: 225px;
+            padding: 0 5px 7px;
+
+            .selected {
+                flex-grow: 1;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                padding-top: 30px;
+            }
+
+            .menuChooser .yearsChooser .years .year.open {
+                height: 85%;
+            }
+
+            .menuChooser .yearsChooser .years .year .months {
+                height: 85%;
+
+                .button {
+                    width: 28%;
+                }
+            }
+
+            .nav {
+                border-bottom-left-radius: 0;
+
+                .button {
+                    padding: 0;
+                    width: 30px;
+                    height: 30px;
+                    border-radius: 15px;
+                }
+
+                .current {
+                    bottom: 15px;
+                }
+            }
+        }
+
+        &>nav {
+            display: none !important;
+        }
+
+        .pickerWrapper {
+            flex-basis: 70%;
+
+            .header {
+                border-top-right-radius: 0;
+                padding: 5px 7px;
+            }
+
+            .day {
+                justify-content: center;
+                padding: 4px;
+
+                &>span {
+                    flex-basis: 32px;
+                }
+
+                &:after {
+                    left: calc(50% - 16px);
+                    top: calc(50% - 16px);
+                }
+
+                &.today {
+                    &:before {
+                        left: calc(50% - 16px);
+                        top: calc(50% - 16px);
+                    }
+                }
+
+                &.selected {
+                    &>span {
+                        left: calc(50% - 16px);
+                        top: calc(50% - 16px);
+                    }
+                }
+            }
+        }
+    }
+
+    .hero {
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        padding: 15px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        background: rgb(0, 209, 178);
+        background: radial-gradient(circle, #0ceecc 0%, #12a8a3 100%);
+
+        .selected {
+            .title {
+                text-align: center;
+                font-size: 5.25rem;
+                font-weight: 300 !important;
+                text-shadow: 0 0 10px rgba(0, 0, 0, .3);
+            }
+
+            .subtitle {
+                margin-left: auto;
+                margin-right: auto;
+                cursor: pointer;
+                font-weight: 700 !important;
+                text-shadow: 0 0 10px rgba(0, 0, 0, .3);
+                text-transform: capitalize;
+            }
+        }
+
+        .menuChooser {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            background: #f2f2f2;
+            left: 0;
+            top: calc(100%);
+            transition: top 0.3s ease-in-out;
+
+            &.open {
+                opacity: 1;
+                top: 0;
+                transition: top 0.3s ease-in-out;
+            }
+
+            .yearsChooser {
+                overflow-y: auto;
+
+                .years {
+                    height: 100%;
+
+                    .year {
+                        height: 34px;
+                        overflow: hidden;
+                        border-bottom: 1px solid #ccc;
+                        transition: all 0.3s ease-in-out;
+
+                        &.open {
+                            height: 100%;
+                            transition: all 0.3s ease-in-out;
+                        }
+
+                        .yearTitle {
+                            cursor: pointer;
+                            text-align: left;
+                            display: block;
+                            color: #777;
+                            font-weight: 600;
+                            padding: 5px 10px;
+                        }
+
+                        .months {
+                            display: flex;
+                            flex-wrap: wrap;
+                            justify-content: center;
+                            align-items: flex-start;
+                            height: calc(100% - 25px);
+                            padding-top: 5px;
+                            padding-bottom: 5px;
+
+                            .button {
+                                width: 30%;
+                                margin-bottom: 10px;
+
+                                &:nth-child(3n + 2) {
+                                    margin: 0 10px 10px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            .monthsChooser {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+    }
+
+    .nav {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 10px;
+        margin: 0;
+        align-items: center;
+        height: 50px;
+
+        .button {
+            padding: 0;
+            width: 30px;
+            height: 30px;
+            border-radius: 15px;
+
+            &:focus,
+            &:hover {
+                background-color: rgba(255, 255, 255, .2);
+                box-shadow: none;
+            }
+
+            &:after {
+                content: '';
+                display: block;
+                width: 12px;
+                height: 12px;
+                border-top: 2px solid rgba(0, 0, 0, 0.25);
+                border-left: 2px solid rgba(0, 0, 0, 0.25);
+            }
+
+            &.prev {
+                &:after {
+                    transform: rotate(-45deg);
+                    margin: 0 0 0 5px;
+                }
+            }
+
+            &.next {
+                &:after {
+                    transform: rotate(135deg);
+                    margin: 0 5px 0 0;
+                }
+            }
+        }
+
+        .current {
+            opacity: 0.65;
+            color: #4a4a4a;
+            font-weight: 700;
+            font-size: .95rem;
+            width: 65%;
+            margin: auto;
+            text-align: center;
+            text-transform: capitalize;
+        }
+    }
+
+    .pickerWrapper {
+        .tableCell {
+            text-align: center;
+        }
+
+        .header {
+            display: flex;
+            flex-flow: row wrap;
+            padding: 5px 0;
+            background: rgba(0, 0, 0, .05);
+            color: #727272;
+            font-weight: 600;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            font-family: 'Barlow Semi Condensed';
+
+            span {
+                display: inline-flex;
+                width: 14.28571%;
+                height: 40px;
+                align-items: center;
+                justify-content: center;
+
+                &:last-child {
+                    border: none;
+                }
+            }
+        }
+
+        .day {
+            display: inline-flex;
+            width: 14.28571%;
+            height: 40px;
+            position: relative;
+            font-family: 'Barlow';
+            font-weight: 600;
+            font-size: 1rem;
+            color: #777;
+
+            &.notInMonth {
+                color: #ccc;
+                font-weight: 400;
+            }
+
+            &:not(.notInMonth) {
+                cursor: pointer;
+            }
+
+            &>span {
+                border-radius: 50%;
+                display: flex;
+                flex-basis: 100%;
+                align-items: center;
+                justify-content: center;
+
+                &:hover {
+                    transition: opacity 0.2s ease-in-out;
+                }
+            }
+
+            &:not(.notInMonth) {
+                &:after {
+                    content: '';
+                    display: flex;
+                    position: absolute;
+                    left: 4px;
+                    top: 4px;
+                    width: 32px;
+                    height: 32px;
+                    border-radius: 18px;
+                    border: 2px solid #00d1b2;
+                    opacity: 0;
+                    transition: opacity 0.2s ease-in-out;
+                }
+
+                &:hover {
+                    &:after {
+                        opacity: 1;
+                        transition: opacity 0.2s ease-in-out;
+                    }
+                }
+            }
+
+            &.today {
+                &:before {
+                    content: '';
+                    display: flex;
+                    position: absolute;
+                    left: 4px;
+                    top: 4px;
+                    width: 32px;
+                    height: 32px;
+                    border-radius: 18px;
+                    border: 2px solid yellow;
+                }
+            }
+
+            &.selected {
+                &>span {
+                    content: '';
+                    display: flex;
+                    position: absolute;
+                    left: 4px;
+                    top: 4px;
+                    width: 32px;
+                    height: 32px;
+                    border-radius: 18px;
+                    background-color: #00d1b2;
+                    color: #FFF !important;
+                    font-weight: bold;
+                }
+            }
+
+            &:last-child {
+                border: none;
+            }
+
+            &.has-text-grey-lighter {
+                a {
+                    color: white;
+                }
+            }
+        }
+    }
+}
