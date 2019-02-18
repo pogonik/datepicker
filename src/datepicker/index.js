@@ -11,10 +11,9 @@ import './index.scss';
 function DatePicker(props) {
 
     let { initMonth } = props;
-
     initMonth.setHours(0, 0, 0, 0);
-    let initMonthData = getMonthData(props.initMonth, props.firstDayOfWeek);
-    getMonthData(props.initMonth, props.firstDayOfWeek);
+
+    let initMonthData = getMonthData(initMonth, props.firstDayOfWeek);
 
     let today = new Date();
     today.setHours(0, 0, 0, 0);
