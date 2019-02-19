@@ -10,5 +10,6 @@ experimenting with Date object, react hooks, bulma ...
     type="vertical" // 'vertical' or 'horizontal'
     selected={new Date()} // selected date object
     initMonth={new Date(2019, 2)} // initial month to show
+    yearsRange={[1970,2100]} // years range to choose date from
     onDateSelect={this.handleDateSelect} /> // function on date select
 ```
