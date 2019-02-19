@@ -50,6 +50,7 @@ function DatePicker(props) {
                 selected={props.selected}
                 language={props.language}
                 updateMonth={updateMonth}
+                yearsRange={props.yearsRange}
                 updateCalendar={updateCalendar} />
 
             <div className={'pickerWrapper'}>
@@ -71,6 +72,7 @@ DatePicker.propTypes = {
     language: PropTypes.string,
     type: PropTypes.string,
     id: PropTypes.string,
+    yearsRange: PropTypes.array,
     onDateSelect: PropTypes.func
 };
 
@@ -79,6 +81,7 @@ DatePicker.defaultProps = {
     language: 'en-GB',
     type: 'horizontal',
     id: 'picker_id',
+    yearsRange: [2000,2030],
     currentDate: null
 };
 

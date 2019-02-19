@@ -160,6 +160,8 @@
         background: radial-gradient(circle, #0ceecc 0%, #12a8a3 100%);
 
         .selected {
+            cursor: pointer;
+            
             .title {
                 text-align: center;
                 font-size: 5.25rem;
@@ -170,7 +172,6 @@
             .subtitle {
                 margin-left: auto;
                 margin-right: auto;
-                cursor: pointer;
                 font-weight: 700 !important;
                 text-shadow: 0 0 10px rgba(0, 0, 0, .3);
                 text-transform: capitalize;

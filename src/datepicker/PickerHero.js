@@ -7,16 +7,16 @@ const PickerHero = props => {
 
     let chooserRef = React.createRef();
 
-    const { selected, language, month, year } = props;
+    const { selected, language, month, year, yearsRange } = props;
 
     let monthNames = MonthsNames(language);
 
     let title = <div className="title">{selected.getDate()}</div>;
-    let subtitle = (<div className="subtitle" onClick={toggleMenuChooser}>
+    let subtitle = (<div className="subtitle">
             {monthNames[selected.getMonth()].short+', '+ selected.getFullYear()}
         </div>);
 
-    let yearsChooser = buildYearsChooser();
+    let yearsChooser = buildYearsChooser(yearsRange);
 
     function buildMonthsChooser(y) {
         let months = monthNames.map((m,i) => {
@@ -39,9 +39,9 @@ const PickerHero = props => {
         );
     }
 
-    function buildYearsChooser() {
+    function buildYearsChooser(range = [2000,2030]) {
         let years = [];
-        for (var i = 2000; i < 2030; i++) {
+        for (var i = range[0]; i < range[1]; i++) {
             let y = buildMonthsChooser(i);
             years[i] = y;
         }
@@ -69,7 +69,7 @@ const PickerHero = props => {
     return (
         <header className={'is-primary hero '}>
 
-            <span className="selected">
+            <span className="selected" onClick={toggleMenuChooser}>
                 {title}
                 {subtitle}
             </span>
@@ -108,12 +108,14 @@ const PickerHero = props => {
 
 PickerHero.propTypes = {
     firstDayOfWeek: PropTypes.number,
-    language: PropTypes.string
+    language: PropTypes.string,
+    yearsRange: PropTypes.array
 };
 
 PickerHero.defaultProps = {
     firstDayOfWeek: 0,
-    language: 'en-GB'
+    language: 'en-GB',
+    yearsRange: [2000,2030]
 };
 
 export default PickerHero;

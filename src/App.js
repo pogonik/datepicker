@@ -32,6 +32,7 @@ class App extends React.Component {
                             type="vertical"
                             selected={this.state.selected['vertical'] || new Date()}
                             initMonth={new Date(2019, 2)}
+                            yearsRange={[1970,2100]}
                             onDateSelect={this.handleDateSelect.bind(this, 'vertical')} />
 
                         <DatePicker
@@ -41,6 +42,7 @@ class App extends React.Component {
                             type="horizontal"
                             selected={this.state.selected['horizontal'] || new Date()}
                             initMonth={new Date(2019, 4)}
+                            yearsRange={[2000,2030]}
                             onDateSelect={this.handleDateSelect.bind(this, 'horizontal')} />
 
                     </div>
