@@ -44,8 +44,6 @@
 
             .body {
                 .day {
-                    width: 38px;
-
                     &:not(.notInMonth):after,
                     &.today:before,
                     &.selected>span {
