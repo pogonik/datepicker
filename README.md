@@ -13,3 +13,4 @@ experimenting with Date object, react hooks, bulma ...
     yearsRange={[1970,2100]} // years range to choose date from
     onDateSelect={this.handleDateSelect} /> // function on date select
 ```
+temp link <a href="https://dmirkovic.kioskassist.net/" target="_blank">temp kiosk link</a>
